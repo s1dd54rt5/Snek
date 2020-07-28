@@ -13,6 +13,7 @@ class _SnekState extends State<Snek> {
 
   void startGame() {
     score = 0;
+    check = false;
     snakePosition = [22, 42, 62];
     const duration = const Duration(milliseconds: 300);
     Timer.periodic(duration, (Timer timer) {
