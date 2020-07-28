@@ -9,6 +9,7 @@ class Snek extends StatefulWidget {
 
 class _SnekState extends State<Snek> {
   int score = 0;
+  bool check = false;
 
   void startGame() {
     score = 0;
@@ -16,7 +17,7 @@ class _SnekState extends State<Snek> {
     const duration = const Duration(milliseconds: 300);
     Timer.periodic(duration, (Timer timer) {
       moveSnake();
-      if (gameOver()) {
+      if (gameOver() || check == true) {
         timer.cancel();
         showGameOverScreen();
       }
@@ -57,6 +58,9 @@ class _SnekState extends State<Snek> {
             ],
           );
         });
+    setState(() {
+      check = false;
+    });
   }
 
   List snakePosition = [22, 42, 62];
@@ -222,6 +226,9 @@ class _SnekState extends State<Snek> {
             children: [
               FlatButton(
                 onPressed: () {
+                  setState(() {
+                    check = false;
+                  });
                   startGame();
                 },
                 child: Container(
@@ -242,7 +249,9 @@ class _SnekState extends State<Snek> {
               ),
               FlatButton(
                 onPressed: () {
-                  startGame();
+                  setState(() {
+                    check = true;
+                  });
                 },
                 child: Container(
                   padding: EdgeInsets.only(bottom: 15),
