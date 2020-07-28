@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 
 class Snek extends StatefulWidget {
@@ -6,7 +7,22 @@ class Snek extends StatefulWidget {
 }
 
 class _SnekState extends State<Snek> {
-  static List snakePosition = [22, 42, 62];
+  void startGame() {
+    const duration = const Duration(milliseconds: 300);
+    Timer.periodic(duration, (Timer timer) {
+      setState(() {
+        if (snakePosition.last + 20 > 760) {
+          snakePosition.add(snakePosition.last + 20 - 760);
+          snakePosition.remove(snakePosition.first);
+        } else {
+          snakePosition.add(snakePosition.last + 20);
+          snakePosition.remove(snakePosition.first);
+        }
+      });
+    });
+  }
+
+  List snakePosition = [22, 42, 62];
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +35,7 @@ class _SnekState extends State<Snek> {
               child: Container(
                 child: GridView.builder(
                     physics: NeverScrollableScrollPhysics(),
-                    itemCount: 700,
+                    itemCount: 760,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 20),
                     itemBuilder: (BuildContext context, int index) {
@@ -48,6 +64,19 @@ class _SnekState extends State<Snek> {
               ),
             ),
           ),
+          FlatButton(
+            onPressed: () {
+              startGame();
+            },
+            child: Container(
+              child: Text(
+                'Start',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );
