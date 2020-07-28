@@ -66,9 +66,9 @@ class _SnekState extends State<Snek> {
   List snakePosition = [22, 42, 62];
 
   static var randomNumber = Random();
-  int food = randomNumber.nextInt(500);
+  int food = randomNumber.nextInt(480);
   void generateNewFood() {
-    food = randomNumber.nextInt(500);
+    food = randomNumber.nextInt(480);
   }
 
   var direction = 'left';
@@ -77,8 +77,8 @@ class _SnekState extends State<Snek> {
     setState(() {
       switch (direction) {
         case 'down':
-          if (snakePosition.last + 20 > 500) {
-            snakePosition.add(snakePosition.last + 20 - 500);
+          if (snakePosition.last + 20 > 480) {
+            snakePosition.add(snakePosition.last + 20 - 480);
           } else {
             snakePosition.add(snakePosition.last + 20);
           }
@@ -86,7 +86,7 @@ class _SnekState extends State<Snek> {
 
         case 'up':
           if (snakePosition.last - 20 < 0) {
-            snakePosition.add(snakePosition.last - 20 + 500);
+            snakePosition.add(snakePosition.last - 20 + 480);
           } else {
             snakePosition.add(snakePosition.last - 20);
           }
@@ -158,7 +158,7 @@ class _SnekState extends State<Snek> {
               child: Container(
                 child: GridView.builder(
                     physics: NeverScrollableScrollPhysics(),
-                    itemCount: 500,
+                    itemCount: 480,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 20),
                     itemBuilder: (BuildContext context, int index) {
