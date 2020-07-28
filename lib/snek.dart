@@ -15,7 +15,7 @@ class _SnekState extends State<Snek> {
     score = 0;
     check = false;
     snakePosition = [22, 42, 62];
-    const duration = const Duration(milliseconds: 300);
+    const duration = const Duration(milliseconds: 100);
     Timer.periodic(duration, (Timer timer) {
       moveSnake();
       if (gameOver() || check == true) {
