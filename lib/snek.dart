@@ -54,14 +54,14 @@ class _SnekState extends State<Snek> {
                 onPressed: () {
                   startGame();
                   Navigator.of(context).pop();
+                  setState(() {
+                    check = false;
+                  });
                 },
               )
             ],
           );
         });
-    setState(() {
-      check = false;
-    });
   }
 
   List snakePosition = [22, 42, 62];
