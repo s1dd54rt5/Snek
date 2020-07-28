@@ -10,19 +10,61 @@ class _SnekState extends State<Snek> {
   void startGame() {
     const duration = const Duration(milliseconds: 300);
     Timer.periodic(duration, (Timer timer) {
-      setState(() {
-        if (snakePosition.last + 20 > 760) {
-          snakePosition.add(snakePosition.last + 20 - 760);
-          snakePosition.remove(snakePosition.first);
-        } else {
-          snakePosition.add(snakePosition.last + 20);
-          snakePosition.remove(snakePosition.first);
-        }
-      });
+      moveSnake();
     });
   }
 
   List snakePosition = [22, 42, 62];
+
+  var direction = 'right';
+
+  void moveSnake() {
+    setState(() {
+      switch (direction) {
+        case 'down':
+          if (snakePosition.last + 20 > 760) {
+            snakePosition.add(snakePosition.last + 20 - 760);
+            snakePosition.remove(snakePosition.first);
+          } else {
+            snakePosition.add(snakePosition.last + 20);
+            snakePosition.remove(snakePosition.first);
+          }
+          break;
+
+        case 'up':
+          if (snakePosition.last - 20 < 0) {
+            snakePosition.add(snakePosition.last - 20 + 760);
+            snakePosition.remove(snakePosition.first);
+          } else {
+            snakePosition.add(snakePosition.last - 20);
+            snakePosition.remove(snakePosition.first);
+          }
+          break;
+
+        case 'left':
+          if (snakePosition.last % 20 == 0) {
+            snakePosition.add(snakePosition.last - 1 + 20);
+            snakePosition.remove(snakePosition.first);
+          } else {
+            snakePosition.add(snakePosition.last - 1);
+            snakePosition.remove(snakePosition.first);
+          }
+          break;
+
+        case 'right':
+          if (snakePosition.last % 20 == 19) {
+            snakePosition.add(snakePosition.last + 1 - 20);
+            snakePosition.remove(snakePosition.first);
+          } else {
+            snakePosition.add(snakePosition.last + 1);
+            snakePosition.remove(snakePosition.first);
+          }
+          break;
+
+        default:
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
