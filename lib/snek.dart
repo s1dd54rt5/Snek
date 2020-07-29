@@ -13,7 +13,6 @@ class _SnekState extends State<Snek> {
 
   void startGame() {
     score = 0;
-    check = false;
     snakePosition = [22, 42, 62];
     const duration = const Duration(milliseconds: 100);
     Timer.periodic(duration, (Timer timer) {
@@ -52,11 +51,9 @@ class _SnekState extends State<Snek> {
               FlatButton(
                 child: Text('Play Again'),
                 onPressed: () {
+                  check = false;
                   startGame();
                   Navigator.of(context).pop();
-                  setState(() {
-                    check = false;
-                  });
                 },
               )
             ],
@@ -227,9 +224,6 @@ class _SnekState extends State<Snek> {
             children: [
               FlatButton(
                 onPressed: () {
-                  setState(() {
-                    check = false;
-                  });
                   startGame();
                 },
                 child: Container(
@@ -250,9 +244,7 @@ class _SnekState extends State<Snek> {
               ),
               FlatButton(
                 onPressed: () {
-                  setState(() {
-                    check = true;
-                  });
+                  check = true;
                 },
                 child: Container(
                   padding: EdgeInsets.only(bottom: 15),
