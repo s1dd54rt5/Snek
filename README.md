@@ -1,7 +1,7 @@
 <p align="center"><img width=52.5% src="https://venturebeat.com/wp-content/uploads/2019/02/google-flutter-logo-white.png?resize=1200%2C600&strip=all"></p>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-[![GitHub Issues](https://img.shields.io/github/issues/anfederico/Clairvoyant.svg)](https://github.com/44t4nk1/Snek/issues)
+[![GitHub Issues](https://img.shields.io/github/issues/44t4nk1/Snek.svg)](https://github.com/44t4nk1/Snek/issues)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## Basic Overview
