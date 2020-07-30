@@ -160,9 +160,26 @@ class _SnekState extends State<Snek> {
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 20),
                     itemBuilder: (BuildContext context, int index) {
+                      if (snakePosition.last == index) {
+                        return Container(
+                          padding: EdgeInsets.all(0.5),
+                          child: ClipRRect(
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                border:
+                                    Border.all(color: Colors.white, width: 2),
+                                color: Color(0xffef335e),
+                              ),
+                              width: 5,
+                              height: 5,
+                            ),
+                          ),
+                        );
+                      }
                       if (snakePosition.contains(index)) {
                         return Container(
-                          padding: EdgeInsets.all(1),
+                          padding: EdgeInsets.all(0.5),
                           child: ClipRRect(
                             child: Container(
                               decoration: BoxDecoration(
@@ -175,9 +192,10 @@ class _SnekState extends State<Snek> {
                           ),
                         );
                       }
+
                       if (index == food) {
                         return Container(
-                          padding: EdgeInsets.all(1),
+                          padding: EdgeInsets.all(0.5),
                           child: ClipRRect(
                             child: Container(
                               decoration: BoxDecoration(
@@ -191,7 +209,7 @@ class _SnekState extends State<Snek> {
                         );
                       } else {
                         return Container(
-                          padding: EdgeInsets.all(1),
+                          padding: EdgeInsets.all(0.5),
                           child: ClipRRect(
                             child: Container(
                               decoration: BoxDecoration(
